@@ -97,17 +97,17 @@ public class TileSpawner : MonoBehaviour
     void CheckInBoundsAndFlip(int x, int y)
     {
         if (IsValidCell(x, y))
-            tileGrid[x][y].ToggleMaterial();
+            tileGrid[x][y].CycleMaterial();
     }
 
     void CheckWin()
     {
-        bool firstObjectIsRed = tileGrid[0][0].isRed;
+        TileColor firstObjectColor = tileGrid[0][0].m_color;
         for (int x = 0; x < width; x++)
         {
             for (int y = 0; y < height; y++)
             {
-                if (tileGrid[x][y].isRed != firstObjectIsRed)
+                if (tileGrid[x][y].m_color != firstObjectColor)
                 {
                     return;
                 }
